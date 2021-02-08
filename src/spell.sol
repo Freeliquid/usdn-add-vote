@@ -336,8 +336,31 @@ contract IlkCfgUSDNDAI {
     }
 }
 
+contract SpellActionCommon is SpellAction {
 
-contract SpellActionMainnet is SpellAction, IlkCfgUSDNDAI, IlkCfgUSDNUSDC {
+    function executeCommon(address changeLogAddr,
+                           SharedStructs.IlkNetSpecific memory netUSDNDAI,
+                           SharedStructs.IlkNetSpecific memory netUSDNUSDC,
+                           SharedStructs.IlkDesc memory descUSDNDAI,
+                           SharedStructs.IlkDesc memory descUSDNUSDC) internal {
+
+        netUSDNUSDC.CHANGELOG = ChainlogAbstract(changeLogAddr);
+        netUSDNDAI.CHANGELOG = ChainlogAbstract(changeLogAddr);
+
+        execute(descUSDNDAI, netUSDNDAI);
+        execute(descUSDNUSDC, netUSDNUSDC);
+
+        address MCD_VAT = ChainlogAbstract(changeLogAddr).getAddress("MCD_VAT");
+
+        VatAbstract(MCD_VAT).file(bytes32("USDTUSDC-A"), "line", 0);
+        VatAbstract(MCD_VAT).file(bytes32("USDTDAI-A"), "line", 0);
+        VatAbstract(MCD_VAT).file(bytes32("USDTUSDN-A"), "line", 0);
+
+        ChainlogAbstract(changeLogAddr).setVersion("1.1.0");
+    }
+}
+
+contract SpellActionMainnet is SpellActionCommon, IlkCfgUSDNDAI, IlkCfgUSDNUSDC {
     function execute() external {
 
         SharedStructs.IlkNetSpecific memory netUSDNDAI;
@@ -347,23 +370,20 @@ contract SpellActionMainnet is SpellAction, IlkCfgUSDNDAI, IlkCfgUSDNUSDC {
         netUSDNDAI.join = 0x0000000000000000000000000000000000000000;
         netUSDNDAI.flip = 0x0000000000000000000000000000000000000000;
         netUSDNDAI.pip = 0x0000000000000000000000000000000000000000;
-        netUSDNDAI.CHANGELOG = ChainlogAbstract(0xBCF02bF29e97d7Bf20005F137a71a27BA82dfe48);
-        execute(getIlkCfgUSDNDAI(), netUSDNDAI);
 
         netUSDNUSDC.gem  = 0x0000000000000000000000000000000000000000;
         netUSDNUSDC.join = 0x0000000000000000000000000000000000000000;
         netUSDNUSDC.flip = 0x0000000000000000000000000000000000000000;
         netUSDNUSDC.pip = 0x0000000000000000000000000000000000000000;
-        netUSDNUSDC.CHANGELOG = ChainlogAbstract(0xBCF02bF29e97d7Bf20005F137a71a27BA82dfe48);
-        execute(getIlkCfgUSDNUSDC(), netUSDNUSDC);
 
-        netUSDNUSDC.CHANGELOG.setVersion("1.1.0");
+        executeCommon(0x0000000000000000000000000000000000000000,
+                      netUSDNDAI, netUSDNUSDC, getIlkCfgUSDNDAI(), getIlkCfgUSDNUSDC());
     }
 }
 
 
 
-contract SpellActionKovan is SpellAction, IlkCfgUSDNDAI, IlkCfgUSDNUSDC {
+contract SpellActionKovan is SpellActionCommon, IlkCfgUSDNDAI, IlkCfgUSDNUSDC {
     function execute() external {
 
         SharedStructs.IlkNetSpecific memory netUSDNDAI;
@@ -373,17 +393,14 @@ contract SpellActionKovan is SpellAction, IlkCfgUSDNDAI, IlkCfgUSDNUSDC {
         netUSDNDAI.join = 0x0000000000000000000000000000000000000000;
         netUSDNDAI.flip = 0x0000000000000000000000000000000000000000;
         netUSDNDAI.pip = 0x0000000000000000000000000000000000000000;
-        netUSDNDAI.CHANGELOG = ChainlogAbstract(0xBCF02bF29e97d7Bf20005F137a71a27BA82dfe48);
-        execute(getIlkCfgUSDNDAI(), netUSDNDAI);
 
         netUSDNUSDC.gem  = 0x0000000000000000000000000000000000000000;
         netUSDNUSDC.join = 0x0000000000000000000000000000000000000000;
         netUSDNUSDC.flip = 0x0000000000000000000000000000000000000000;
         netUSDNUSDC.pip = 0x0000000000000000000000000000000000000000;
-        netUSDNUSDC.CHANGELOG = ChainlogAbstract(0xBCF02bF29e97d7Bf20005F137a71a27BA82dfe48);
-        execute(getIlkCfgUSDNUSDC(), netUSDNUSDC);
 
-        netUSDNUSDC.CHANGELOG.setVersion("1.1.0");
+        executeCommon(0xBCF02bF29e97d7Bf20005F137a71a27BA82dfe48,
+                      netUSDNDAI, netUSDNUSDC, getIlkCfgUSDNDAI(), getIlkCfgUSDNUSDC());
     }
 }
 
