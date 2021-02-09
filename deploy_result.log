@@ -1,0 +1,23 @@
+./deploy_secondary_ct_kovan.sh
+VAT=0xb6cBc309C5D8c04555Fea9D6Fbeb65E22A1d687e
+FLIP_FAB=0xfA04c1132536E46Ac09974c64619c6862BF2fDbf
+ILK32_USDNDAI=0x5553444e4441492d410000000000000000000000000000000000000000000000
+seth-send: Published transaction with 68 bytes of calldata.
+seth-send: 0x06193c5c6e13d17d2ed25dda98d16707ef9e0c5ed81b95d1ceee95e7d0ca5461
+seth-send: Waiting for transaction receipt...
+seth-send: Transaction included in block 23384775.
+ILK32_USDNUSDC=0x5553444e555344432d4100000000000000000000000000000000000000000000
+seth-send: Published transaction with 68 bytes of calldata.
+seth-send: 0x0e2b60bd4a2e80f141d38d8b2697d6457317d8bf2756588f5a915f689bbfd0a7
+seth-send: Waiting for transaction receipt....
+seth-send: Transaction included in block 23384778.
+seth-send: Published transaction with 4047 bytes of calldata.
+seth-send: 0xacb34b692e5299aa0bbee5cd4728c23e3ada4576ac21b9a9bb9257a110554120
+seth-send: Waiting for transaction receipt...
+seth-send: Transaction included in block 23384781.
+seth-send: Published transaction with 4047 bytes of calldata.
+seth-send: 0x8da29c4a325e8ce331aa6996bcc91180335dc39ab2bf9753775cde122d3ad257
+seth-send: Waiting for transaction receipt...
+seth-send: Transaction included in block 23384784.
+JOIN_USDNUSDC=0x272c0573db1d137b8c81e832dfbc7577b5c7012d
+JOIN_USDNDAI=0x42b6c766844201c5437cf2a09420ea81bf01eb45
