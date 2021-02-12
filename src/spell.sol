@@ -390,16 +390,16 @@ contract SpellActionKovan is SpellActionCommon, IlkCfgUSDNDAI, IlkCfgUSDNUSDC {
         SharedStructs.IlkNetSpecific memory netUSDNUSDC;
 
         netUSDNDAI.gem  = 0xA778bc72bF31953555b6E094503792BA66cc8d72;
-        netUSDNDAI.join = 0xfe6C7dF81d9861FE031f3Fe0D0ee8743EC95522F;
-        netUSDNDAI.flip = 0x52472A35992608555C40F1fc3ed9153279C79021;
-        netUSDNDAI.pip = 0x275b4104a64D52775Cc72f7d13811fc84381876D;
+        netUSDNDAI.join = 0x79C405269c25764b836B820dE2d9A192232E3579;
+        netUSDNDAI.flip = 0x6A3d699AE0357e1003c95fEa5BF3Ef29cB2bf211;
+        netUSDNDAI.pip = 0xa19d59e6a7440015B52fB3FcB44C9D3D33099b11;
 
         netUSDNUSDC.gem  = 0x30DaBEd27aF8Bdeec71D8b0CeEa0f6C954E1E060;
-        netUSDNUSDC.join = 0x129E960aC653C2bF24c39198A819b7B21Cc5f745;
-        netUSDNUSDC.flip = 0x038d176c13Cd88b3A627e3BA61F8eb2d89f362BF;
-        netUSDNUSDC.pip = 0xaF86c6DBe91528CbC0891116beFd99CCA7CB4184;
+        netUSDNUSDC.join = 0x72ad2d668de04A3fbEa7209053804147C767F4C3;
+        netUSDNUSDC.flip = 0x653DedfFd1e7186A2068F6686DB362b8D7F2d2c9;
+        netUSDNUSDC.pip = 0x00fDF2C917CA0d938b2eE0E3C2975a1B7bfBDCd2;
 
-        executeCommon(0xBCF02bF29e97d7Bf20005F137a71a27BA82dfe48,
+        executeCommon(0x82D62e8B5355f0dc2DA894D18EFCce349C2dE71C,
                       netUSDNDAI, netUSDNUSDC, getIlkCfgUSDNDAI(), getIlkCfgUSDNUSDC());
     }
 }
@@ -453,7 +453,7 @@ contract ActionSpellMainnet is ActionSpell {
 
 contract ActionSpellKovan is ActionSpell {
     constructor() public {
-        pause = 0x8dCDa003fF12Bd3546F5Faed6bb1413E506e019F;
+        pause = 0x4608754e7Ca3caCD54b6C4862C978214243AB3da;
         setup(address(new SpellActionKovan()));
     }
 }
